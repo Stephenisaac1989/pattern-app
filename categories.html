@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categories</title>
+  <link rel="stylesheet" href="categories.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header class="category-header">
+    <a href="index.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+    <h1>Fashion Categories</h1>
+  </header>
+
+  <section class="categories">
+    <div class="category-card" data-category="men">Men</div>
+    <div class="category-card" data-category="women">Women</div>
+    <div class="category-card" data-category="kids">Kids</div>
+    <div class="category-card" data-category="traditional">Traditional</div>
+    <div class="category-card" data-category="casual">Casual</div>
+  </section>
+
+  <section id="category-gallery" class="category-gallery"></section>
+
+  <script src="categories.js"></script>
+</body>
+</html>

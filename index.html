@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plain & Pattern App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <button class="share-button" id="shareBtn" style="background:none; border:none;">
+      <i class="fas fa-share-alt" style="font-size: 1.5rem;"></i>
+    </button>
+    <img src="images/fabric1.jpg" alt="App Logo" class="logo" />
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Plain & Pattern App</h1>
+      <p>Elegant fabrics & tailoring</p>
+      <p>Explore our plain and pattern fashion collection</p>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Fabric Gallery</h2>
+      <div class="carousel">
+        <img src="images/fabric4.jpg" alt="Fabric 1" class="carousel-image active" />
+        <img src="images/fabric2.jpg" alt="Fabric 2" class="carousel-image" />
+        <img src="images/fabric1.jpg" alt="Fabric 3" class="carousel-image" />
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="gallery.html"><i class="fas fa-images"></i></a>
+    <a href="categories.html"><i class="fas fa-th-large"></i></a>
+    <a href="contact.html"><i class="fas fa-envelope"></i></a>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const shareBtn = document.getElementById('shareBtn');
+
+      shareBtn.addEventListener('click', async () => {
+        const imagePath = localStorage.getItem('sharedImagePath') || 'images/fabric1.jpg';
+
+        try {
+          const response = await fetch(imagePath);
+          const blob = await response.blob();
+          const file = new File([blob], 'fabric.jpg', { type: blob.type });
+
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: 'Plain & Pattern Fabric',
+              text: 'Check out this elegant fabric!',
+              files: [file]
+            });
+          } else {
+            alert('Sharing not supported on this device or browser.');
+          }
+        } catch (err) {
+          console.error('Sharing failed:', err);
+          alert('Could not share image.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

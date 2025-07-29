@@ -1,0 +1,156 @@
+/* Reset & base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(270deg, rgba(173, 216, 230, 0.4), rgba(255, 255, 255, 0.2)),
+    url("images/background1.jpg");
+  color: #333;
+}
+
+/* Header with back arrow */
+.category-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: navy;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 255, 0, 0.2);
+}
+
+.category-header h1 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.back-arrow {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.back-arrow:hover {
+  transform: scale(1.2);
+}
+
+/* Category cards section */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.category-card {
+  background-color: navy;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  text-align: center;
+  min-width: 120px;
+}
+
+.category-card:hover {
+  background-color: #cc0000;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(179, 0, 0, 0.3);
+}
+
+/* Gallery display section */
+.category-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(270deg, rgba(173, 216, 230, 0.4), rgba(255, 255, 255, 0.2)),
+    url("images/background1.jpg");
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.category-gallery img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(204, 0, 0, 0.4);
+}
+.category-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.category-gallery img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.category-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .category-card {
+    min-width: 100px;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .category-gallery img {
+    width: 130px;
+    height: 160px;
+  }
+
+  .category-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category-card {
+    min-width: 90px;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .category-gallery img {
+    width: 110px;
+    height: 140px;
+  }
+}

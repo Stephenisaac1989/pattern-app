@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+    <h1>Contact Us</h1>
+  </header>
+
+  <main>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" placeholder="Your Phone Number" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Write your message here..." rows="5" required></textarea>
+
+      <button type="submit" id="sendBtn">
+        <i class="fas fa-sms"></i> Send as SMS
+      </button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const recipientPhone = '09086915853'; // Your real phone number here
+      const fullMessage = `Hello, my name is ${name}, my phone is ${phone}. Message: ${message}`;
+      const encodedMessage = encodeURIComponent(fullMessage);
+
+      // Construct the SMS URL (Android/iOS compatible)
+      const smsLink = navigator.userAgent.match(/Android/i)
+        ? `sms:${recipientPhone}?body=${encodedMessage}`
+        : `sms:${recipientPhone}&body=${encodedMessage}`; // iOS uses &
+
+      // Open SMS app
+      window.location.href = smsLink;
+    });
+  </script>
+</body>
+</html>
